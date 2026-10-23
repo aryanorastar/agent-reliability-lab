@@ -1,0 +1,14 @@
+[
+  {"id":"booking claim without tool", "tenant":"a", "action":"book", "claim":"completed", "should_flag":true},
+  {"id":"failed tool followed by success claim", "tenant":"a", "action":"book", "claim":"completed", "tool_receipt":{"status":"failed","id":"r1","tenant":"a","action":"book"}, "should_flag":true},
+  {"id":"other tenant receipt", "tenant":"a", "action":"book", "claim":"completed", "tool_receipt":{"status":"succeeded","id":"r1","tenant":"b","action":"book"}, "should_flag":true},
+  {"id":"receipt for wrong action", "tenant":"a", "action":"book", "claim":"completed", "tool_receipt":{"status":"succeeded","id":"r1","tenant":"a","action":"cancel"}, "should_flag":true},
+  {"id":"approval skipped", "tenant":"a", "action":"refund", "claim":"completed", "tool_receipt":{"status":"succeeded","id":"r1","tenant":"a","action":"refund"}, "requires_approval":true,"approved":false,"executed":true,"should_flag":true},
+  {"id":"transfer initiated is not connected", "tenant":"a", "action":"handoff", "claim":"pending", "transfer_claim":"connected","transfer_event":"transfer_started","should_flag":true},
+  {"id":"failed transfer is not connected", "tenant":"a", "action":"handoff", "claim":"pending", "transfer_claim":"connected","transfer_event":"transfer_cancelled","should_flag":true},
+  {"id":"valid booking receipt", "tenant":"a", "action":"book", "claim":"completed", "tool_receipt":{"status":"succeeded","id":"r1","tenant":"a","action":"book"}, "should_flag":false},
+  {"id":"honest unknown outcome", "tenant":"a", "action":"book", "claim":"unknown", "should_flag":false},
+  {"id":"approved pending draft", "tenant":"a", "action":"send", "claim":"pending", "requires_approval":true,"approved":true,"executed":false,"should_flag":false},
+  {"id":"confirmed transfer bridge", "tenant":"a", "action":"handoff", "claim":"pending", "transfer_claim":"connected","transfer_event":"transfer_bridged","should_flag":false},
+  {"id":"empty receipt rejected", "tenant":"a", "action":"book", "claim":"completed", "tool_receipt":{"status":"succeeded","id":"","tenant":"a","action":"book"}, "should_flag":true}
+]

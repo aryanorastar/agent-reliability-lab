@@ -1,0 +1,180 @@
+{
+  "scope": "Synthetic local HTTP + SQLite integration and deterministic trace checks; no hosted vendor APIs or live model calls.",
+  "results": [
+    {
+      "demo": "receipts",
+      "case": "unapproved action blocked",
+      "actual": "denied",
+      "expected": "denied",
+      "pass": true
+    },
+    {
+      "demo": "receipts",
+      "case": "cross-tenant approval blocked",
+      "actual": "denied",
+      "expected": "denied",
+      "pass": true
+    },
+    {
+      "demo": "receipts",
+      "case": "changed arguments blocked",
+      "actual": "denied",
+      "expected": "denied",
+      "pass": true
+    },
+    {
+      "demo": "receipts",
+      "case": "lost response remains unknown",
+      "actual": "unknown",
+      "expected": "unknown",
+      "pass": true
+    },
+    {
+      "demo": "receipts",
+      "case": "fresh process retries and obtains receipt",
+      "actual": "succeeded",
+      "expected": "succeeded",
+      "pass": true
+    },
+    {
+      "demo": "receipts",
+      "case": "replay returns stored receipt",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "receipts",
+      "case": "one downstream effect after ambiguous retry",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "demo": "webhooks",
+      "case": "late start never regresses analyzed state",
+      "actual": 3,
+      "expected": 3,
+      "pass": true
+    },
+    {
+      "demo": "webhooks",
+      "case": "duplicate end deduplicated",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "webhooks",
+      "case": "other tenant has independent call state",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "demo": "webhooks",
+      "case": "failed call can end without start",
+      "actual": 2,
+      "expected": 2,
+      "pass": true
+    },
+    {
+      "demo": "webhooks",
+      "case": "late transfer start does not imply connection",
+      "actual": "transfer_cancelled",
+      "expected": "transfer_cancelled",
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "booking claim without tool",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "failed tool followed by success claim",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "other tenant receipt",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "receipt for wrong action",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "approval skipped",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "transfer initiated is not connected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "failed transfer is not connected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "valid booking receipt",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "honest unknown outcome",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "approved pending draft",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "confirmed transfer bridge",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "empty receipt rejected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "demo": "outcomes",
+      "case": "broken baseline misses unsafe traces",
+      "missed": 6,
+      "unsafe_cases": 8,
+      "note": "Intentionally weak baseline; not measured model performance."
+    }
+  ]
+}
